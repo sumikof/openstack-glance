@@ -1,0 +1,21 @@
+[DEFAULT]
+bind_host = 0.0.0.0
+log_file=/var/log/glance/api.log
+log_dir=/var/log/glance
+[glance_store]
+default_store = file
+filesystem_store_datadir = /var/lib/glance/images/
+[database]
+connection = mysql+pymysql://{{GLANCE_USER}}:{{GLANCE_PASSWORD}}@openstack-db/glance
+[keystone_authtoken]
+www_authenticate_uri = http://openstack-keystone:5000
+auth_url = http://openstack-keystone:5000
+memcached_servers = openstack-memcached:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = {{GLANCE_USER}}
+password = {{GLANCE_PASSWORD}}
+[paste_deploy]
+flavor = keystone
