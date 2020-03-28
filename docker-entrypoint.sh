@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -x
 
 render glance-api.conf.template -o /etc/glance/glance-api.conf
 
